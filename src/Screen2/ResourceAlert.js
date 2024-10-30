@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Accordion } from "react-bootstrap";
 import data from "./alertsData.json";
 import ResourceSeverityLegend from "./ResourceSeverityLegend";
+import PopulationDensityLegend from "./PopulationDensityLegend";
 
 // 根据严重程度返回颜色
 const getSeverityColor = (severity) => {
@@ -160,6 +161,7 @@ const ResourceAlert = () => {
         );
       })}
       <ResourceSeverityLegend />
+      <PopulationDensityLegend />
     </MapContainer>
     
   );

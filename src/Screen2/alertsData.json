@@ -8,21 +8,21 @@
         "community_availability": 100,
         "official_last_updated": "2024-10-29 12:00:00",
         "community_last_updated": "2024-10-29 10:00:00",
-        "predicted_demands": 140
+        "predicted_demands": 110
       },
       "medical_availability": {
         "official_availability": 25,
         "community_availability": 18,
         "official_last_updated": "2024-10-28 09:30:00",
         "community_last_updated": "2024-10-28 08:00:00",
-        "predicted_demands": 30
+        "predicted_demands": 15
       },
       "housing_availability": {
         "official_availability": 180,
         "community_availability": 160,
         "official_last_updated": "2024-10-27 15:00:00",
         "community_last_updated": "2024-10-27 13:30:00",
-        "predicted_demands": 200
+        "predicted_demands": 150
       }
     },
     {
@@ -60,21 +60,21 @@
         "community_availability": 85,
         "official_last_updated": "2024-10-29 10:30:00",
         "community_last_updated": "2024-10-29 09:15:00",
-        "predicted_demands": 150
+        "predicted_demands": 90
       },
       "medical_availability": {
         "official_availability": 20,
         "community_availability": 16,
         "official_last_updated": "2024-10-28 09:00:00",
         "community_last_updated": "2024-10-28 08:00:00",
-        "predicted_demands": 28
+        "predicted_demands": 10
       },
       "housing_availability": {
         "official_availability": 150,
         "community_availability": 130,
         "official_last_updated": "2024-10-27 14:00:00",
         "community_last_updated": "2024-10-27 13:00:00",
-        "predicted_demands": 190
+        "predicted_demands": 120
       }
     },
     {
@@ -138,21 +138,21 @@
         "community_availability": 70,
         "official_last_updated": "2024-10-29 11:15:00",
         "community_last_updated": "2024-10-29 09:45:00",
-        "predicted_demands": 125
+        "predicted_demands": 50
       },
       "medical_availability": {
         "official_availability": 22,
         "community_availability": 18,
         "official_last_updated": "2024-10-28 09:45:00",
         "community_last_updated": "2024-10-28 09:00:00",
-        "predicted_demands": 27
+        "predicted_demands": 12
       },
       "housing_availability": {
         "official_availability": 130,
         "community_availability": 115,
         "official_last_updated": "2024-10-27 16:00:00",
         "community_last_updated": "2024-10-27 15:30:00",
-        "predicted_demands": 170
+        "predicted_demands": 100
       }
     },
     {
@@ -190,21 +190,21 @@
         "community_availability": 80,
         "official_last_updated": "2024-10-29 12:00:00",
         "community_last_updated": "2024-10-29 10:00:00",
-        "predicted_demands": 135
+        "predicted_demands": 95
       },
       "medical_availability": {
         "official_availability": 25,
         "community_availability": 20,
         "official_last_updated": "2024-10-28 10:00:00",
         "community_last_updated": "2024-10-28 09:30:00",
-        "predicted_demands": 30
+        "predicted_demands": 28
       },
       "housing_availability": {
         "official_availability": 160,
         "community_availability": 140,
         "official_last_updated": "2024-10-27 16:30:00",
         "community_last_updated": "2024-10-27 15:00:00",
-        "predicted_demands": 190
+        "predicted_demands": 150
       }
     }
   ]
