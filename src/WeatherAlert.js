@@ -27,7 +27,7 @@ const getMarkerIcon = (severity) => {
   } else if (severity === "Watch") {
     return L.AwesomeMarkers.icon({
       icon: "eye",
-      markerColor: "blue",
+      markerColor: "purple",
       prefix: "fa",
     });
   } else {
@@ -39,12 +39,124 @@ const getMarkerIcon = (severity) => {
   }
 };
 
+// WeatherAlertLegend组件
+const WeatherAlertLegend = () => (
+  <div
+    style={{
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
+      padding: "10px",
+      borderRadius: "5px",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+      opacity: 0.85,
+      zIndex: 1000,
+    }}
+  >
+    <h4>Severe Weather Alerts</h4>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "orange" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Warning</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "blue" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Watch</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "green" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Info</span>
+    </div>
+  </div>
+);
+
+// PopulationDensityLegend组件
+const PopulationDensityLegend = () => (
+  <div
+    style={{
+      position: "absolute",
+      bottom: "10px",
+      left: "10px",
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
+      padding: "10px",
+      borderRadius: "5px",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+      zIndex: 1000,
+      opacity: 0.85,
+    }}
+  >
+    <h4>Indigenous Population Density</h4>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "blue",
+          opacity: 0.3,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}>Low</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "blue",
+          opacity: 0.5,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium-Low</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "yellow",
+          opacity: 0.7,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "orange",
+          opacity: 0.9,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium-High</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "red",
+          opacity: 1,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> High</span>
+    </div>
+  </div>
+);
+
+// Tweedsmuir 警告的影响区域
 const TweedsmuirImpactLayer = () => {
   const map = useMap();
 
   useEffect(() => {
-    const tweedsmuirLocation = [53.175, -126.5];
-    const radiusInMeters = 70000;
+    const tweedsmuirLocation = [53.175, -126.5]; // Tweedsmuir 的坐标
+    const radiusInMeters = 50000; // 50公里的影响范围
 
     // 创建圆形覆盖层
     const circle = L.circle(tweedsmuirLocation, {
@@ -152,7 +264,7 @@ const WeatherAlert = () => {
 
   return (
     <MapContainer
-      center={[53.175, -123.0]} // 将地图中心放在 Tweedsmuir 以展示
+      center={[53.175, -126.5]} // 将地图中心放在 Tweedsmuir 以展示
       zoom={6} // 适当的缩放级别
       style={{ height: "100vh", width: "100%" }}
     >
@@ -160,6 +272,8 @@ const WeatherAlert = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
+      <PopulationDensityLegend />
+      <WeatherAlertLegend />
       <EsriHeatmapLayer />
       <NationHeatmapLayer />
       <TweedsmuirImpactLayer /> {/* 添加 Tweedsmuir 的影响范围层 */}
