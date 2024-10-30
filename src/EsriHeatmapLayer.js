@@ -27,7 +27,7 @@ const EsriHeatmapLayer = () => {
         // 将数据转换为热力图格式
         const heatPoints = featureCollection.features.map((feature) => {
           const [lon, lat] = feature.geometry.coordinates;
-          return [lat, lon, 0.6]; // 第三个参数是强度，可以根据需要调整
+          return [lat, lon, 0.5]; // 第三个参数是强度，可以根据需要调整
         });
 
         // 检查是否已经有热力图层，如果没有，则创建

@@ -5,6 +5,8 @@ import axios from "axios";
 import L from "leaflet";
 import EsriHeatmapLayer from "./EsriHeatmapLayer";
 import "leaflet.heat";
+import "leaflet.awesome-markers";
+import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
 
 // 清除默认的 Leaflet 图标设置
 delete L.Icon.Default.prototype._getIconUrl;
@@ -13,6 +15,28 @@ L.Icon.Default.mergeOptions({
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
+
+const getMarkerIcon = (severity) => {
+  if (severity === "Warning") {
+    return L.AwesomeMarkers.icon({
+      icon: "exclamation-triangle", // 使用 FontAwesome 的图标
+      markerColor: "orange", // Warning 使用橙色图标
+      prefix: "fa",
+    });
+  } else if (severity === "Watch") {
+    return L.AwesomeMarkers.icon({
+      icon: "eye", // 使用 eye 图标来表示 Watch
+      markerColor: "blue", // Watch 使用蓝色图标
+      prefix: "fa",
+    });
+  } else {
+    return L.AwesomeMarkers.icon({
+      icon: "info-circle", // 默认图标
+      markerColor: "green",
+      prefix: "fa",
+    });
+  }
+};
 
 const cities = [
   {
@@ -445,7 +469,11 @@ const WeatherAlert = () => {
       <WeatherAlertHeatmapLayer alerts={alerts} />
 
       {alerts.map((alert, index) => (
-        <Marker key={index} position={[alert.lat, alert.lon]}>
+        <Marker
+          key={index}
+          position={[alert.lat, alert.lon]}
+          icon={getMarkerIcon(alert.alerts[0]?.severity)}
+        >
           <Popup>
             <h3>
               {alert.city} - {alert.alerts[0].title}
