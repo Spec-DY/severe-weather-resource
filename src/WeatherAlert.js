@@ -1,10 +1,12 @@
 // src/WeatherAlert.js
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import axios from "axios";
 import L from "leaflet";
 import EsriHeatmapLayer from "./EsriHeatmapLayer";
+import "leaflet.heat";
 
+// 清除默认的 Leaflet 图标设置
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -275,53 +277,158 @@ const cities = [
   },
 ];
 
+const WeatherAlertHeatmapLayer = ({ alerts }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!alerts || alerts.length === 0) return;
+
+    const alertPoints = alerts.map((alert) => [
+      alert.lat,
+      alert.lon,
+      alert.alerts[0]?.severity === "Warning" ? 0.8 : 0.4,
+    ]);
+
+    const heatLayer = L.heatLayer(alertPoints, {
+      radius: 40, // 增大半径
+      blur: 20, // 控制模糊度
+      maxZoom: 10,
+      gradient: {
+        0.0: "green",
+        0.5: "yellow",
+        1.0: "red",
+      }, // 自定义颜色渐变
+    }).addTo(map);
+
+    return () => {
+      if (heatLayer) {
+        map.removeLayer(heatLayer);
+      }
+    };
+  }, [alerts, map]);
+
+  return null;
+};
+
 const WeatherAlert = () => {
   const [alerts, setAlerts] = useState([]);
   const API_KEY = "";
 
+  // faux data
   useEffect(() => {
-    const fetchWeatherData = async () => {
-      const cachedData = localStorage.getItem("weatherAlerts");
-      if (cachedData) {
-        setAlerts(JSON.parse(cachedData));
-      } else {
-        const requests = cities.map((city) =>
-          axios.get(`https://api.weatherbit.io/v2.0/alerts`, {
-            params: {
-              city: city.name,
-              country: "CA",
-              key: API_KEY,
-            },
-          })
-        );
-
-        try {
-          const responses = await Promise.all(requests);
-          const alertData = responses
-            .map((response, index) => {
-              const data = response.data;
-              if (data.alerts && data.alerts.length > 0) {
-                return {
-                  city: cities[index].name,
-                  lat: cities[index].lat,
-                  lon: cities[index].lon,
-                  alerts: data.alerts,
-                };
-              }
-              return null;
-            })
-            .filter((alert) => alert !== null);
-
-          setAlerts(alertData);
-          localStorage.setItem("weatherAlerts", JSON.stringify(alertData));
-        } catch (error) {
-          console.error("Error fetching weather data:", error);
-        }
-      }
-    };
-
-    fetchWeatherData();
+    setAlerts([
+      {
+        city_name: "Victoria",
+        country_code: "CA",
+        lat: 48.43294,
+        lon: -123.3693,
+        state_code: "BC",
+        timezone: "America/Vancouver",
+        alerts: [
+          {
+            title: "wind warning in effect",
+            description:
+              "\nStrong winds that may cause damage are expected or occurring.\n\nWhere: East Vancouver Island - Nanoose Bay to Campbell River, Greater Victoria.\n\nWhen: Wednesday morning to afternoon.\n\nExpected peak winds: Southeast 70 km/h gusting to 90 over exposed coastal areas, and near Haro Strait.\n\nRemarks: A Pacific frontal system approaching Vancouver Island will produce strong southeasterly winds. The strong winds will develop Wednesday morning then ease in the afternoon when the front weakens.\n\n###\n\nLoose objects may be tossed by the wind and cause injury or damage. High winds may result in power outages and fallen tree branches.\n\nPlease continue to monitor alerts and forecasts issued by Environment Canada. To report severe weather, send an email to BCstorm@ec.gc.ca or tweet reports using #BCStorm.\n",
+            severity: "Watch",
+            effective_local: "2024-10-29T16:26:47",
+            expires_local: "2024-10-30T08:26:47",
+            regions: ["Greater Victoria"],
+            uri: "https://weather.gc.ca/",
+          },
+          {
+            title: "avertissement de vent en vigueur",
+            description:
+              "\nDes vents forts pouvant causer des dommages soufflent ou souffleront.\n\nOù : l'île de Vancouver-Est - de Nanoose Bay à Campbell River, le grand Victoria.\n\nQuand : mercredi matin et mercredi après-midi.\n\nVents maximums prévus : du sud-est de 70 km/h avec des rafales à 90 km/h sur les secteurs côtiers à découvert et près du détroit de Haro.\n\nRemarques : un système frontal du Pacifique qui s'approche de l'île de Vancouver produira des vents forts du sud-est. Les vents forts se lèveront mercredi matin, puis faibliront en après-midi lorsque le front faiblira.\n\n###\n\nLe vent pourrait emporter les objets non fixés à une surface et causer des blessures ou des dommages. Les vents violents pourraient causer des pannes d'électricité et casser des branches d'arbres.\n\nVeuillez continuer à surveiller les alertes et les prévisions émises par Environnement Canada. Pour signaler du temps violent, envoyez un courriel à meteoBC@ec.gc.ca ou publiez un gazouillis en utilisant le mot-clic #BCMeteo.\n",
+            severity: "Watch",
+            effective_local: "2024-10-29T16:26:47",
+            expires_local: "2024-10-30T08:26:47",
+            regions: ["Grand Victoria"],
+            uri: "https://meteo.gc.ca/",
+          },
+        ],
+      },
+      {
+        city_name: "Vancouver",
+        country_code: "CA",
+        lat: 49.2827,
+        lon: -123.1207,
+        state_code: "BC",
+        timezone: "America/Vancouver",
+        alerts: [
+          {
+            title: "flood warning in effect",
+            description:
+              "\nHeavy rain expected, leading to potential flooding in low-lying areas.\n\nWhere: Greater Vancouver area.\n\nWhen: From Tuesday night until Thursday morning.\n\nExpected rainfall: 100-150 mm.\n\nRemarks: An atmospheric river event is expected to bring prolonged heavy rainfall to the region. Flooding of highways, streets, and underpasses as well as streams and rivers may occur.\n\n###\n\nAvoid flooded areas and monitor Environment Canada for updates. Report severe weather by sending an email to BCstorm@ec.gc.ca or tweeting with #BCStorm.\n",
+            severity: "Warning",
+            effective_local: "2024-10-29T20:00:00",
+            expires_local: "2024-10-31T08:00:00",
+            regions: ["Greater Vancouver"],
+            uri: "https://weather.gc.ca/",
+          },
+        ],
+      },
+      {
+        city_name: "Kelowna",
+        country_code: "CA",
+        lat: 49.888,
+        lon: -119.496,
+        state_code: "BC",
+        timezone: "America/Vancouver",
+        alerts: [
+          {
+            title: "snowfall warning in effect",
+            description:
+              "\nHeavy snowfall expected. Accumulation of 20 cm is likely.\n\nWhere: Kelowna and surrounding areas.\n\nWhen: Thursday night through Friday afternoon.\n\nRemarks: A cold front will bring heavy snow to the region. Be prepared for significant reductions in visibility in heavy snow.\n\n###\n\nTravel may be hazardous due to sudden changes in the weather. Continue to monitor alerts and forecasts issued by Environment Canada.\n",
+            severity: "Warning",
+            effective_local: "2024-10-30T18:00:00",
+            expires_local: "2024-10-31T15:00:00",
+            regions: ["Kelowna"],
+            uri: "https://weather.gc.ca/",
+          },
+        ],
+      },
+    ]);
   }, []);
+
+  // useEffect(() => {
+  //   const fetchWeatherData = async () => {
+  //     const cachedData = localStorage.getItem("weatherAlerts");
+  //     if (cachedData) {
+  //       setAlerts(JSON.parse(cachedData));
+  //     } else {
+  //       const requests = cities.map((city) =>
+  //         axios.get(`https://api.weatherbit.io/v2.0/alerts`, {
+  //           params: { city: city.name, country: "CA", key: API_KEY },
+  //         })
+  //       );
+
+  //       try {
+  //         const responses = await Promise.all(requests);
+  //         const alertData = responses
+  //           .map((response, index) => {
+  //             const data = response.data;
+  //             if (data.alerts && data.alerts.length > 0) {
+  //               return {
+  //                 city: cities[index].name,
+  //                 lat: cities[index].lat,
+  //                 lon: cities[index].lon,
+  //                 alerts: data.alerts,
+  //               };
+  //             }
+  //             return null;
+  //           })
+  //           .filter((alert) => alert !== null);
+
+  //         setAlerts(alertData);
+  //         localStorage.setItem("weatherAlerts", JSON.stringify(alertData));
+  //       } catch (error) {
+  //         console.error("Error fetching weather data:", error);
+  //       }
+  //     }
+  //   };
+
+  //   fetchWeatherData();
+  // }, []);
 
   return (
     <MapContainer
@@ -335,6 +442,7 @@ const WeatherAlert = () => {
       />
 
       <EsriHeatmapLayer />
+      <WeatherAlertHeatmapLayer alerts={alerts} />
 
       {alerts.map((alert, index) => (
         <Marker key={index} position={[alert.lat, alert.lon]}>
