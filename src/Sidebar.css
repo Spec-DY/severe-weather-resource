@@ -1,0 +1,32 @@
+/* src/Sidebar.css */
+.custom-sidebar {
+    width: 200px;
+    height: 100vh;
+  }
+  
+  .sidebar-header {
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #1E90FF;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .pro-sidebar {
+    min-height: 100vh;
+    color: #ffffff;
+  }
+  
+  .pro-sidebar .pro-menu-item {
+    padding: 10px 15px;
+  }
+  
+  .pro-sidebar .pro-menu-item:hover {
+    background-color: #1E90FF;
+  }
+  
+  .pro-icon {
+    color: #ffffff;
+  }
+  

@@ -1,16 +1,26 @@
 // src/App.js
-import React from "react";
-import "./App.css";
-import ResourceAlert from "./ResourceAlert";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import WeatherAlert from './Screen1/WeatherAlert';
+import ResourceAlert from './Screen2/ResourceAlert';
+import './App.css';
+import CustomSidebar from './CustomSidebar';
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <ResourceAlert />
-    </div>
+    <Router>
+      <div className="app">
+        <CustomSidebar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/WeatherAlert" />} />
+            <Route path="/WeatherAlert" element={<WeatherAlert />} />
+            <Route path="/ResourceAlert" element={<ResourceAlert />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
