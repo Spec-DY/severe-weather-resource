@@ -9,6 +9,7 @@ import "./MapStyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Accordion } from "react-bootstrap";
 import data from "./alertsData.json";
+import ResourceSeverityLegend from "./ResourceSeverityLegend";
 
 // 根据严重程度返回颜色
 const getSeverityColor = (severity) => {
@@ -158,7 +159,9 @@ const ResourceAlert = () => {
           </Marker>
         );
       })}
+      <ResourceSeverityLegend />
     </MapContainer>
+    
   );
 };
 
