@@ -1,0 +1,211 @@
+[
+    {
+      "community_name": "Tsimshian First Nation",
+      "lat": 54.1667,
+      "lon": -129.9903,
+      "food_availability": {
+        "official_availability": 120,
+        "community_availability": 100,
+        "official_last_updated": "2024-10-29 12:00:00",
+        "community_last_updated": "2024-10-29 10:00:00",
+        "predicted_demands": 140
+      },
+      "medical_availability": {
+        "official_availability": 25,
+        "community_availability": 18,
+        "official_last_updated": "2024-10-28 09:30:00",
+        "community_last_updated": "2024-10-28 08:00:00",
+        "predicted_demands": 30
+      },
+      "housing_availability": {
+        "official_availability": 180,
+        "community_availability": 160,
+        "official_last_updated": "2024-10-27 15:00:00",
+        "community_last_updated": "2024-10-27 13:30:00",
+        "predicted_demands": 200
+      }
+    },
+    {
+      "community_name": "Carrier Sekani Tribal Council",
+      "lat": 53.9171,
+      "lon": -122.7497,
+      "food_availability": {
+        "official_availability": 90,
+        "community_availability": 70,
+        "official_last_updated": "2024-10-29 11:00:00",
+        "community_last_updated": "2024-10-29 09:00:00",
+        "predicted_demands": 130
+      },
+      "medical_availability": {
+        "official_availability": 18,
+        "community_availability": 12,
+        "official_last_updated": "2024-10-28 08:30:00",
+        "community_last_updated": "2024-10-28 07:45:00",
+        "predicted_demands": 25
+      },
+      "housing_availability": {
+        "official_availability": 140,
+        "community_availability": 120,
+        "official_last_updated": "2024-10-27 17:00:00",
+        "community_last_updated": "2024-10-27 16:00:00",
+        "predicted_demands": 180
+      }
+    },
+    {
+      "community_name": "Heiltsuk Nation",
+      "lat": 52.1483,
+      "lon": -128.1167,
+      "food_availability": {
+        "official_availability": 110,
+        "community_availability": 85,
+        "official_last_updated": "2024-10-29 10:30:00",
+        "community_last_updated": "2024-10-29 09:15:00",
+        "predicted_demands": 150
+      },
+      "medical_availability": {
+        "official_availability": 20,
+        "community_availability": 16,
+        "official_last_updated": "2024-10-28 09:00:00",
+        "community_last_updated": "2024-10-28 08:00:00",
+        "predicted_demands": 28
+      },
+      "housing_availability": {
+        "official_availability": 150,
+        "community_availability": 130,
+        "official_last_updated": "2024-10-27 14:00:00",
+        "community_last_updated": "2024-10-27 13:00:00",
+        "predicted_demands": 190
+      }
+    },
+    {
+      "community_name": "Tsilhqot'in Nation",
+      "lat": 52.1395,
+      "lon": -125.5963,
+      "food_availability": {
+        "official_availability": 100,
+        "community_availability": 75,
+        "official_last_updated": "2024-10-29 11:00:00",
+        "community_last_updated": "2024-10-29 09:30:00",
+        "predicted_demands": 150
+      },
+      "medical_availability": {
+        "official_availability": 20,
+        "community_availability": 15,
+        "official_last_updated": "2024-10-28 10:00:00",
+        "community_last_updated": "2024-10-28 09:30:00",
+        "predicted_demands": 30
+      },
+      "housing_availability": {
+        "official_availability": 200,
+        "community_availability": 180,
+        "official_last_updated": "2024-10-27 14:00:00",
+        "community_last_updated": "2024-10-27 13:30:00",
+        "predicted_demands": 250
+      }
+    },
+    {
+      "community_name": "Nuu-chah-nulth Tribal Council",
+      "lat": 49.6784,
+      "lon": -125.0000,
+      "food_availability": {
+        "official_availability": 80,
+        "community_availability": 60,
+        "official_last_updated": "2024-10-29 10:00:00",
+        "community_last_updated": "2024-10-29 09:45:00",
+        "predicted_demands": 130
+      },
+      "medical_availability": {
+        "official_availability": 15,
+        "community_availability": 12,
+        "official_last_updated": "2024-10-28 08:30:00",
+        "community_last_updated": "2024-10-28 07:45:00",
+        "predicted_demands": 25
+      },
+      "housing_availability": {
+        "official_availability": 150,
+        "community_availability": 130,
+        "official_last_updated": "2024-10-27 18:00:00",
+        "community_last_updated": "2024-10-27 17:30:00",
+        "predicted_demands": 190
+      }
+    },
+    {
+      "community_name": "Squamish Nation",
+      "lat": 49.3902,
+      "lon": -123.236,
+      "food_availability": {
+        "official_availability": 95,
+        "community_availability": 70,
+        "official_last_updated": "2024-10-29 11:15:00",
+        "community_last_updated": "2024-10-29 09:45:00",
+        "predicted_demands": 125
+      },
+      "medical_availability": {
+        "official_availability": 22,
+        "community_availability": 18,
+        "official_last_updated": "2024-10-28 09:45:00",
+        "community_last_updated": "2024-10-28 09:00:00",
+        "predicted_demands": 27
+      },
+      "housing_availability": {
+        "official_availability": 130,
+        "community_availability": 115,
+        "official_last_updated": "2024-10-27 16:00:00",
+        "community_last_updated": "2024-10-27 15:30:00",
+        "predicted_demands": 170
+      }
+    },
+    {
+      "community_name": "Katzie First Nation",
+      "lat": 49.2167,
+      "lon": -122.6667,
+      "food_availability": {
+        "official_availability": 85,
+        "community_availability": 65,
+        "official_last_updated": "2024-10-29 10:30:00",
+        "community_last_updated": "2024-10-29 09:30:00",
+        "predicted_demands": 120
+      },
+      "medical_availability": {
+        "official_availability": 18,
+        "community_availability": 13,
+        "official_last_updated": "2024-10-28 10:15:00",
+        "community_last_updated": "2024-10-28 09:30:00",
+        "predicted_demands": 22
+      },
+      "housing_availability": {
+        "official_availability": 140,
+        "community_availability": 125,
+        "official_last_updated": "2024-10-27 17:30:00",
+        "community_last_updated": "2024-10-27 16:45:00",
+        "predicted_demands": 175
+      }
+    },
+    {
+      "community_name": "Secwepemc Nation",
+      "lat": 50.6745,
+      "lon": -120.3273,
+      "food_availability": {
+        "official_availability": 105,
+        "community_availability": 80,
+        "official_last_updated": "2024-10-29 12:00:00",
+        "community_last_updated": "2024-10-29 10:00:00",
+        "predicted_demands": 135
+      },
+      "medical_availability": {
+        "official_availability": 25,
+        "community_availability": 20,
+        "official_last_updated": "2024-10-28 10:00:00",
+        "community_last_updated": "2024-10-28 09:30:00",
+        "predicted_demands": 30
+      },
+      "housing_availability": {
+        "official_availability": 160,
+        "community_availability": 140,
+        "official_last_updated": "2024-10-27 16:30:00",
+        "community_last_updated": "2024-10-27 15:00:00",
+        "predicted_demands": 190
+      }
+    }
+  ]
+  
