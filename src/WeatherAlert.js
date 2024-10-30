@@ -38,6 +38,115 @@ const getMarkerIcon = (severity) => {
   }
 };
 
+const PopulationDensityLegend = () => (
+  <div
+    style={{
+      position: "absolute",
+      bottom: "10px",
+      left: "10px",
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
+      padding: "10px",
+      borderRadius: "5px",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+      zIndex: 1000,
+      opacity: 0.85,
+    }}
+  >
+    <h4>Indigenous Population Density</h4>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "blue",
+          opacity: 0.3,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}>Low</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "blue",
+          opacity: 0.5,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium-Low</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "yellow",
+          opacity: 0.7,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "orange",
+          opacity: 0.9,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Medium-High</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          backgroundColor: "red",
+          opacity: 1,
+        }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> High</span>
+    </div>
+  </div>
+);
+
+const WeatherAlertLegend = () => (
+  <div
+    style={{
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
+      padding: "10px",
+      borderRadius: "5px",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+      opacity: 0.85,
+      zIndex: 1000,
+    }}
+  >
+    <h4>Severe Weather Alerts</h4>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "orange" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Warning</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "blue" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Watch</span>
+    </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{ width: "20px", height: "20px", backgroundColor: "green" }}
+      ></div>
+      <span style={{ marginLeft: "5px" }}> Info</span>
+    </div>
+  </div>
+);
+
 const cities = [
   {
     name: "Abbotsford",
@@ -372,26 +481,6 @@ const WeatherAlert = () => {
         ],
       },
       {
-        city_name: "Vancouver",
-        country_code: "CA",
-        lat: 49.2827,
-        lon: -123.1207,
-        state_code: "BC",
-        timezone: "America/Vancouver",
-        alerts: [
-          {
-            title: "flood warning in effect",
-            description:
-              "\nHeavy rain expected, leading to potential flooding in low-lying areas.\n\nWhere: Greater Vancouver area.\n\nWhen: From Tuesday night until Thursday morning.\n\nExpected rainfall: 100-150 mm.\n\nRemarks: An atmospheric river event is expected to bring prolonged heavy rainfall to the region. Flooding of highways, streets, and underpasses as well as streams and rivers may occur.\n\n###\n\nAvoid flooded areas and monitor Environment Canada for updates. Report severe weather by sending an email to BCstorm@ec.gc.ca or tweeting with #BCStorm.\n",
-            severity: "Warning",
-            effective_local: "2024-10-29T20:00:00",
-            expires_local: "2024-10-31T08:00:00",
-            regions: ["Greater Vancouver"],
-            uri: "https://weather.gc.ca/",
-          },
-        ],
-      },
-      {
         city_name: "Kelowna",
         country_code: "CA",
         lat: 49.888,
@@ -407,6 +496,26 @@ const WeatherAlert = () => {
             effective_local: "2024-10-30T18:00:00",
             expires_local: "2024-10-31T15:00:00",
             regions: ["Kelowna"],
+            uri: "https://weather.gc.ca/",
+          },
+        ],
+      },
+      {
+        city_name: "Capilano - Lower Seymour",
+        country_code: "CA",
+        lat: 49.3839,
+        lon: -123.0867,
+        state_code: "BC",
+        timezone: "America/Vancouver",
+        alerts: [
+          {
+            title: "wildfire warning in effect",
+            description:
+              "\nWildfire risk is high due to dry conditions.\n\nWhere: Forested areas near Lower Seymour.\n\nWhen: Until further notice.\n\nRemarks: Extreme fire risk is anticipated as dry and windy conditions persist. Residents are advised to avoid any open flames or activities that may spark fires.\n\n###\n\nStay informed and be ready to evacuate if conditions worsen.\n\nPlease continue to monitor alerts and forecasts issued by local authorities. Report fires immediately by calling emergency services.\n",
+            severity: "Warning",
+            effective_local: "2024-10-29T10:00:00",
+            expires_local: "Until further notice",
+            regions: ["Forested areas near Lower Seymour"],
             uri: "https://weather.gc.ca/",
           },
         ],
@@ -456,8 +565,8 @@ const WeatherAlert = () => {
 
   return (
     <MapContainer
-      center={[49.0847, -123.3]}
-      zoom={10}
+      center={[49.25, -123.1]}
+      zoom={11}
       style={{ height: "100vh", width: "100%" }}
     >
       <TileLayer
@@ -467,6 +576,8 @@ const WeatherAlert = () => {
 
       <EsriHeatmapLayer />
       <WeatherAlertHeatmapLayer alerts={alerts} />
+      <WeatherAlertLegend />
+      <PopulationDensityLegend />
 
       {alerts.map((alert, index) => (
         <Marker
