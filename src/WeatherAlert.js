@@ -7,6 +7,7 @@ import EsriHeatmapLayer from "./EsriHeatmapLayer";
 import "leaflet.heat";
 import "leaflet.awesome-markers";
 import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+import NationHeatmapLayer from "./NationHeatmapLayer";
 
 // 清除默认的 Leaflet 图标设置
 delete L.Icon.Default.prototype._getIconUrl;
@@ -575,6 +576,8 @@ const WeatherAlert = () => {
       />
 
       <EsriHeatmapLayer />
+      <NationHeatmapLayer />
+
       <WeatherAlertHeatmapLayer alerts={alerts} />
       <WeatherAlertLegend />
       <PopulationDensityLegend />
